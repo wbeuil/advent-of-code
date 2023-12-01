@@ -1,7 +1,7 @@
+import { existsSync } from "fs";
 import { argv } from "process";
 
 import { getInput } from "./utils.ts";
-import { existsSync } from "fs";
 
 if (argv.length < 3) {
     console.log("Usage: bun start <day> <year>");
