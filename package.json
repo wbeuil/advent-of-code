@@ -1,0 +1,17 @@
+{
+  "name": "aoc",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "prettify": "prettier --write .",
+    "start": "bun run index.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "prettier": "^3.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
