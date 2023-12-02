@@ -18,3 +18,7 @@ export const getInput = async (day: string, year: string): Promise<string> => {
     writeFileSync(path, text);
     return text;
 };
+
+export const sanitizeInput = (input: string): string => {
+    return input.replace(/^\n+|\n+$/g, "");
+};
