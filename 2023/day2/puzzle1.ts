@@ -8,7 +8,7 @@ export const findMaxByColor = (input: string, color: string): number => {
 };
 
 export const handler = (input: string): number => {
-    const bag = { red: 12, green: 13, blue: 14 };
+    const bag: Record<string, number> = { red: 12, green: 13, blue: 14 };
     return input
         .split("\n")
         .map((t, i) => {

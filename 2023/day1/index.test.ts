@@ -25,7 +25,7 @@ zoneight234
 7pqrstsixteen
 `;
         expect(p2(sanitizeInput(input))).toBe(281);
-        const input2 = `nineight`;
+        const input2 = "nineight";
         expect(p2(sanitizeInput(input2))).toBe(98);
     });
 });
