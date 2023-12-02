@@ -1,15 +1,17 @@
-# aoc
+# Advent of Code
 
 To install dependencies:
 
 ```bash
-bun install
+$ bun install
 ```
 
-To run:
+All the commands you can run:
 
 ```bash
-bun run index.ts
+$ bun test # run all tests
+$ bun solve <day> <year> # run the solver for a specific day and year
+$ bun format # format all files
+$ bun lint # lint all files
+$ bun typecheck # typecheck all files
 ```
-
-This project was created using `bun init` in bun v1.0.14. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
