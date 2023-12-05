@@ -20,19 +20,24 @@ for (let i = 1; i < 3; i++) {
         continue;
     }
     if (!existsSync(dirname(puzzle))) {
-        mkdirSync(dirname(puzzle), { recursive: true })
+        mkdirSync(dirname(puzzle), { recursive: true });
     }
-    writeFileSync(puzzle, sanitizeInput(`
+    writeFileSync(
+        puzzle,
+        sanitizeInput(`
 export const handler = (input: string): number => {
     return 1
 }
-`))
+`),
+    );
     console.log(`File ${puzzle} created`);
 }
 
 const test = `./${year}/day${day}/index.test.ts`;
 if (!existsSync(test)) {
-    writeFileSync(test, sanitizeInput(`
+    writeFileSync(
+        test,
+        sanitizeInput(`
 import { describe, expect, test } from "bun:test";
 
 import { sanitizeInput } from "../../utils";
@@ -49,6 +54,7 @@ describe("day1", () => {
         expect(p2(sanitizeInput(input))).toBe(1);
     });
 });
-`))
-    console.log(`Test file created`);
+`),
+    );
+    console.log("Test file created");
 }
