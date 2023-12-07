@@ -32,5 +32,5 @@ export const handler = (input: string): number => {
         const records = computeRecords(race);
         recordsPerRace.push(records.length);
     }
-    return recordsPerRace.reduce((acc, curr) => acc * curr, 1);
+    return recordsPerRace.reduce((acc, cur) => acc * cur, 1);
 };
