@@ -4,7 +4,7 @@ import { sanitizeInput } from "../../utils";
 import { handler as p1 } from "./puzzle1";
 import { handler as p2 } from "./puzzle2";
 
-describe("day1", () => {
+describe("day7", () => {
     test("puzzle1", () => {
         const input = `
 32T3K 765

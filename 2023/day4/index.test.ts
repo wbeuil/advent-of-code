@@ -4,7 +4,7 @@ import { sanitizeInput } from "../../utils";
 import { handler as p1 } from "./puzzle1";
 import { handler as p2 } from "./puzzle2";
 
-describe("day1", () => {
+describe("day4", () => {
     test("puzzle1", () => {
         const input = `
 Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
