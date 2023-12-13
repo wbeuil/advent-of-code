@@ -1,3 +1,5 @@
+import { sum } from "../../utils";
+
 export const getWinningAndPlayerNumbers = (line: string): [number[], number[]] => {
     const matches = line.match(/Card (?: *\d+): ( *\d+(?: *\d+)*) \| ( *\d+(?: *\d+)*)/);
     if (!matches) throw new Error(`Invalid line: ${line}`);
@@ -7,9 +9,8 @@ export const getWinningAndPlayerNumbers = (line: string): [number[], number[]] =
 };
 
 export const handler = (input: string): number => {
-    return input
-        .split("\n")
-        .map((line) => {
+    return sum(
+        input.split("\n").map((line) => {
             let points = 0;
             const [winningNumbers, playerNumbers] = getWinningAndPlayerNumbers(line);
             for (const playerNumber of playerNumbers) {
@@ -18,6 +19,6 @@ export const handler = (input: string): number => {
                 }
             }
             return points;
-        })
-        .reduce((acc, cur) => acc + cur, 0);
+        }),
+    );
 };

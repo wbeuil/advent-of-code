@@ -1,3 +1,5 @@
+import { sum } from "../../utils";
+
 type NumberCoordinate = {
     int: number;
     startIndex: number;
@@ -63,5 +65,5 @@ export const handler = (input: string): number => {
             }
         }
     }
-    return candidates.reduce((acc, cur) => acc + cur, 0);
+    return sum(candidates);
 };

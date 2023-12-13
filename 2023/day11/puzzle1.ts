@@ -1,3 +1,5 @@
+import { sum } from "../../utils";
+
 type Galaxy = {
     x: number;
     y: number;
@@ -50,5 +52,5 @@ export const handler = (input: string): number => {
             shortestPaths.push(computeShortestPath(galaxyA, galaxyB));
         }
     }
-    return shortestPaths.reduce((acc, cur) => acc + cur, 0);
+    return sum(shortestPaths);
 };

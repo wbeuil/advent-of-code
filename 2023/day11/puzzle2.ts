@@ -1,3 +1,4 @@
+import { sum } from "../../utils";
 import { computeShortestPath, parseGalaxies } from "./puzzle1";
 
 export const handler = (input: string): number => {
@@ -9,5 +10,5 @@ export const handler = (input: string): number => {
             shortestPaths.push(computeShortestPath(galaxyA, galaxyB));
         }
     }
-    return shortestPaths.reduce((acc, cur) => acc + cur, 0);
+    return sum(shortestPaths);
 };

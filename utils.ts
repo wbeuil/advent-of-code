@@ -22,3 +22,9 @@ export const getInput = async (day: string, year: string): Promise<string> => {
 export const sanitizeInput = (input: string): string => {
     return input.replace(/^\n+|\n+$/g, "");
 };
+
+export const sum = (numbers: number[]): number => numbers.reduce((acc, cur) => acc + cur, 0);
+
+export const gcd = (a: number, b: number): number => (!b ? a : gcd(b, a % b));
+
+export const lcm = (a: number, b: number): number => a * (b / gcd(a, b));

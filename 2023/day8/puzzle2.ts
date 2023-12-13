@@ -1,14 +1,7 @@
+import { lcm } from "../../utils";
 import { parseNodes } from "./puzzle1";
 
 import type { Node } from "./puzzle1";
-
-const gcd = (a: number, b: number): number => {
-    return !b ? a : gcd(b, a % b);
-};
-
-const lcm = (a: number, b: number): number => {
-    return a * (b / gcd(a, b));
-};
 
 const traverseNodes = (instructions: string, nodes: Record<string, Node>): number => {
     const startNodes = Object.keys(nodes).filter((key) => key.endsWith("A"));

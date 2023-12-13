@@ -1,9 +1,9 @@
+import { sum } from "../../utils";
 import { listAllSequences } from "./puzzle1";
 
 export const handler = (input: string): number => {
-    return input
-        .split("\n")
-        .map((line) => {
+    return sum(
+        input.split("\n").map((line) => {
             const history = line.split(" ").map(Number);
             const sequences = listAllSequences(history);
             for (let i = sequences.length - 1; i >= 0; i--) {
@@ -15,6 +15,6 @@ export const handler = (input: string): number => {
                 }
             }
             return sequences[0][0];
-        })
-        .reduce((acc, cur) => acc + cur, 0);
+        }),
+    );
 };

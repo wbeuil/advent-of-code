@@ -1,3 +1,5 @@
+import { sum } from "../../utils";
+
 const findAndReplace = (input: string): string => {
     const digits: Record<string, string> = {
         one: "1",
@@ -15,13 +17,12 @@ const findAndReplace = (input: string): string => {
 };
 
 export const handler = (input: string): number => {
-    return input
-        .split("\n")
-        .map((t) => {
+    return sum(
+        input.split("\n").map((t) => {
             const replacedT = findAndReplace(t);
             const numbers = replacedT.match(/\d/g);
             if (!numbers) throw new Error("Could not find number"); // should never happen
             return parseInt(`${numbers[0]}${numbers[numbers.length - 1]}`, 10);
-        })
-        .reduce((acc, cur) => acc + cur, 0);
+        }),
+    );
 };

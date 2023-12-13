@@ -1,3 +1,4 @@
+import { sum } from "../../utils";
 import { findCoordinates, isAdjacent } from "./puzzle1";
 
 export const handler = (input: string): number => {
@@ -15,5 +16,5 @@ export const handler = (input: string): number => {
             candidates.push(adjacentNumbers[0] * adjacentNumbers[1]);
         }
     }
-    return candidates.reduce((acc, cur) => acc + cur, 0);
+    return sum(candidates);
 };

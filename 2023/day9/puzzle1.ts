@@ -1,3 +1,5 @@
+import { sum } from "../../utils";
+
 const findSequence = (numbers: number[]): number[] => {
     const differences = [];
     for (let i = 1; i < numbers.length; i++) {
@@ -17,9 +19,8 @@ export const listAllSequences = (history: number[]): number[][] => {
 };
 
 export const handler = (input: string): number => {
-    return input
-        .split("\n")
-        .map((line) => {
+    return sum(
+        input.split("\n").map((line) => {
             const history = line.split(" ").map(Number);
             const sequences = listAllSequences(history);
             for (let i = sequences.length - 1; i >= 0; i--) {
@@ -31,6 +32,6 @@ export const handler = (input: string): number => {
                 }
             }
             return sequences[0][sequences[0].length - 1];
-        })
-        .reduce((acc, cur) => acc + cur, 0);
+        }),
+    );
 };
