@@ -26,8 +26,8 @@ for (let i = 1; i < 3; i++) {
         puzzle,
         sanitizeInput(`
 export const handler = (input: string): number => {
-    return 1
-}
+    return 1;
+};
 `),
     );
     console.log(`File ${puzzle} created`);
@@ -44,13 +44,13 @@ import { sanitizeInput } from "../../utils";
 import { handler as p1 } from "./puzzle1";
 import { handler as p2 } from "./puzzle2";
 
-describe("day1", () => {
+describe("day${day}", () => {
     test("puzzle1", () => {
-        const input = \`\`
+        const input = \`\`;
         expect(p1(sanitizeInput(input))).toBe(1);
     });
     test("puzzle2", () => {
-        const input = \`\`
+        const input = \`\`;
         expect(p2(sanitizeInput(input))).toBe(1);
     });
 });
