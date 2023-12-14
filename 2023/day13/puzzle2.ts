@@ -1,4 +1,5 @@
-import { findReflectionLine, transpose } from "./puzzle1";
+import { transpose } from "../../utils";
+import { findReflectionLine } from "./puzzle1";
 
 const countSmudges = (lineA: string, lineB: string): number => {
     let smudges = 0;

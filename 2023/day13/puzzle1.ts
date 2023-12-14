@@ -1,3 +1,5 @@
+import { transpose } from "../../utils";
+
 const checkReflectionLine = (lines: string[], index: number): boolean => {
     for (let i = index - 1, j = index; i >= 0 && j < lines.length; i--, j++) {
         if (lines[i] !== lines[j]) return false;
@@ -10,14 +12,6 @@ export const findReflectionLine = (lines: string[], checkFn: (lines: string[], i
         if (checkFn(lines, i)) return i;
     }
     return 0;
-};
-
-export const transpose = (rows: string[]): string[] => {
-    const columns = Array(rows[0].length).fill("");
-    for (const row of rows) {
-        for (let i = 0; i < row.length; i++) columns[i] += row[i];
-    }
-    return columns;
 };
 
 export const handler = (input: string): number => {

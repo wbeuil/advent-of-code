@@ -45,3 +45,11 @@ export const memoize = <T>(fn: (...args: any[]) => T): MemoizedFunction<T> => {
         return value;
     };
 };
+
+export const transpose = (rows: string[]): string[] => {
+    const columns = Array(rows[0].length).fill("");
+    for (const row of rows) {
+        for (let i = 0; i < row.length; i++) columns[i] += row[i];
+    }
+    return columns;
+};
