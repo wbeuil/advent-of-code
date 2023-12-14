@@ -46,10 +46,10 @@ export const memoize = <T>(fn: (...args: any[]) => T): MemoizedFunction<T> => {
     };
 };
 
-export const transpose = (rows: string[]): string[] => {
-    const columns = Array(rows[0].length).fill("");
-    for (const row of rows) {
-        for (let i = 0; i < row.length; i++) columns[i] += row[i];
+export const transpose = (lines: string[]): string[] => {
+    const transposedLines = Array(lines[0].length).fill("");
+    for (const line of lines) {
+        for (let i = 0; i < line.length; i++) transposedLines[i] += line[i];
     }
-    return columns;
+    return transposedLines;
 };
