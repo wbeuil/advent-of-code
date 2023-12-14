@@ -28,3 +28,20 @@ export const sum = (numbers: number[]): number => numbers.reduce((acc, cur) => a
 export const gcd = (a: number, b: number): number => (!b ? a : gcd(b, a % b));
 
 export const lcm = (a: number, b: number): number => a * (b / gcd(a, b));
+
+// biome-ignore lint/suspicious/noExplicitAny: variadic arguments
+type MemoizedFunction<T> = (...args: any[]) => T;
+
+// biome-ignore lint/suspicious/noExplicitAny: variadic arguments
+export const memoize = <T>(fn: (...args: any[]) => T): MemoizedFunction<T> => {
+    const cache = new Map<string, T>();
+    return (...args) => {
+        const key = JSON.stringify(args);
+        if (cache.has(key)) {
+            return cache.get(key) as T;
+        }
+        const value = fn(...args);
+        cache.set(key, value);
+        return value;
+    };
+};
