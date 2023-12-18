@@ -30,7 +30,7 @@ export const gcd = (a: number, b: number): number => (!b ? a : gcd(b, a % b));
 export const lcm = (a: number, b: number): number => a * (b / gcd(a, b));
 
 // biome-ignore lint/suspicious/noExplicitAny: variadic arguments
-type MemoizedFunction<T> = (...args: any[]) => T;
+export type MemoizedFunction<T> = (...args: any[]) => T;
 
 // biome-ignore lint/suspicious/noExplicitAny: variadic arguments
 export const memoize = <T>(fn: (...args: any[]) => T): MemoizedFunction<T> => {
@@ -53,3 +53,16 @@ export const transpose = (lines: string[]): string[] => {
     }
     return transposedLines;
 };
+
+export const window = <T>(array: T[], size: number): T[][] => {
+    return array.map((_, i) => array.slice(i, i + size)).slice(0, array.length - size + 1);
+};
+
+export type Vertex = [number, number];
+
+export const distance = (a: Vertex, b: Vertex): number => Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2);
+
+export const area = (vertices: Vertex[]): number =>
+    Math.abs(sum(window(vertices, 2).map(([[x1, y1], [x2, y2]]) => (x1 - x2) * (y2 + y1))) / 2);
+
+export const perimeter = (vertices: Vertex[]): number => sum(window(vertices, 2).map(([a, b]) => distance(a, b)));

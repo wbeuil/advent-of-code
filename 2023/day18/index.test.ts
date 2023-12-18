@@ -24,7 +24,7 @@ U 2 (#7a21e3)
 `;
         expect(p1(sanitizeInput(input))).toBe(62);
     });
-    test.skip("puzzle2", () => {
+    test("puzzle2", () => {
         const input = `
 R 6 (#70c710)
 D 5 (#0dc571)

@@ -1,40 +1,23 @@
-import { fillInterior } from "./puzzle1";
+import { Vertex, area, perimeter } from "../../utils";
 
-enum Direction {
-    Right = 0,
-    Down = 1,
-    Left = 2,
-    Up = 3,
-}
+const directions: number[][] = [
+    [1, 0],
+    [0, 1],
+    [-1, 0],
+    [0, -1],
+];
 
-const parsePlan = (input: string): string[] => {
-    const plan = [];
-    let x = 0;
-    let y = 0;
+export const handler = (input: string): number => {
     const lines = input.split("\n");
+    const points: Vertex[] = [[0, 0]];
     for (const line of lines) {
         const match = line.match(/([a-fA-F0-9]{6})/g);
         if (!match) throw new Error("Could not find hexadecimal");
-        const meters = parseInt(match[0].slice(0, 5), 16);
         const direction = Number(match[0].slice(5));
-        if (direction === Direction.Right) {
-            for (let i = 0; i < Number(meters); i++, x++) plan.push(`${y}:${x}`);
-        }
-        if (direction === Direction.Left) {
-            for (let i = 0; i < Number(meters); i++, x--) plan.push(`${y}:${x}`);
-        }
-        if (direction === Direction.Down) {
-            for (let i = 0; i < Number(meters); i++, y++) plan.push(`${y}:${x}`);
-        }
-        if (direction === Direction.Up) {
-            for (let i = 0; i < Number(meters); i++, y--) plan.push(`${y}:${x}`);
-        }
+        const meters = parseInt(match[0].slice(0, 5), 16);
+        const position = points[points.length - 1];
+        const [x, y] = directions[direction];
+        points.push([position[0] + Number(meters) * x, position[1] + Number(meters) * y]);
     }
-    return plan;
-};
-
-export const handler = (input: string): number => {
-    const plan = parsePlan(input);
-    const interior = fillInterior(plan);
-    return plan.length + interior;
+    return area(points) + perimeter(points) * 0.5 + 1;
 };
