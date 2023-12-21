@@ -66,3 +66,7 @@ export const area = (vertices: Vertex[]): number =>
     Math.abs(sum(window(vertices, 2).map(([[x1, y1], [x2, y2]]) => (x1 - x2) * (y2 + y1))) / 2);
 
 export const perimeter = (vertices: Vertex[]): number => sum(window(vertices, 2).map(([a, b]) => distance(a, b)));
+
+export const deepCopyMap = <K, V>(map: Map<K, V>): Map<K, V> => new Map(JSON.parse(JSON.stringify([...map])));
+
+export const deepCopySet = <T>(set: Set<T>): Set<T> => new Set(JSON.parse(JSON.stringify([...set])));

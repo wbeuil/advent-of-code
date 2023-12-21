@@ -1,9 +1,9 @@
 import { writeFileSync } from "fs";
 
-import { lcm } from "../../utils";
+import { deepCopyMap, lcm } from "../../utils";
 import { parseConfiguration, run } from "./puzzle1";
 
-import type { ConjuctionModule, FinalModule, Module } from "./puzzle1";
+import type { ConjuctionModule, FinalModule } from "./puzzle1";
 
 // Install graphviz first with brew install graphviz
 export const graph = (input: string): void => {
@@ -28,9 +28,6 @@ export const handler = (input: string): number => {
     const configuration = parseConfiguration(input, true);
     const finale = configuration.get("rx") as FinalModule;
     const source = configuration.get(finale.source) as ConjuctionModule;
-    const array = Object.keys(source.rememberedPulses).map((key) => {
-        const clone: Map<string, Module> = new Map(JSON.parse(JSON.stringify([...configuration])));
-        return run(clone, key);
-    });
+    const array = Object.keys(source.rememberedPulses).map((key) => run(deepCopyMap(configuration), key));
     return array.reduce(lcm);
 };

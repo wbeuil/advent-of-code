@@ -41,7 +41,7 @@ export interface FinalModule extends BaseModule {
     on: boolean;
 }
 
-export type Module = ButtonModule | BroadcastModule | FlipFlopModule | ConjuctionModule | FinalModule;
+type Module = ButtonModule | BroadcastModule | FlipFlopModule | ConjuctionModule | FinalModule;
 
 export const parseConfiguration = (input: string, withFinal = false): Map<string, Module> => {
     const conjunctionsModules = [];
