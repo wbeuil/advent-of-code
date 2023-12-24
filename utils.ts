@@ -70,3 +70,14 @@ export const perimeter = (vertices: Vertex[]): number => sum(window(vertices, 2)
 export const deepCopyMap = <K, V>(map: Map<K, V>): Map<K, V> => new Map(JSON.parse(JSON.stringify([...map])));
 
 export const deepCopySet = <T>(set: Set<T>): Set<T> => new Set(JSON.parse(JSON.stringify([...set])));
+
+export const max = (numbers: number[]): number => numbers.reduce((a, b) => Math.max(a, b), -Infinity);
+
+export const min = (numbers: number[]): number => numbers.reduce((a, b) => Math.min(a, b), Infinity);
+
+export const incrementLetter = (current: string): string => {
+    if (!current) return 'A';
+    const lastChar = current.slice(-1);
+    if (lastChar !== 'Z') return current.slice(0, -1) + String.fromCharCode(lastChar.charCodeAt(0) + 1);
+    return incrementLetter(current.slice(0, -1)) + 'A';
+}
