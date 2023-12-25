@@ -23,6 +23,9 @@ export const sanitizeInput = (input: string): string => {
     return input.replace(/^\n+|\n+$/g, "");
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: function type
+export const isPromise = (fn: any) => fn instanceof Promise || (fn && typeof fn.then === "function");
+
 export const sum = (numbers: number[]): number => numbers.reduce((acc, cur) => acc + cur, 0);
 
 export const gcd = (a: number, b: number): number => (!b ? a : gcd(b, a % b));

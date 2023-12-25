@@ -1,7 +1,7 @@
 import { existsSync } from "fs";
 import { argv } from "process";
 
-import { getInput } from "./utils.ts";
+import { getInput, isPromise } from "./utils.ts";
 
 if (argv.length < 3) {
     console.log("Usage: bun solve <day> <year>");
@@ -20,6 +20,7 @@ for (let i = 1; i < 3; i++) {
     }
     const input = await getInput(day, year);
     const { handler } = await import(puzzle);
-    const output = handler(input);
+    let output = handler(input);
+    if (isPromise(output)) output = await output;
     console.log(`Output: ${output}`);
 }
