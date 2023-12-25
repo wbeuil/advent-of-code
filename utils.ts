@@ -76,8 +76,11 @@ export const max = (numbers: number[]): number => numbers.reduce((a, b) => Math.
 export const min = (numbers: number[]): number => numbers.reduce((a, b) => Math.min(a, b), Infinity);
 
 export const incrementLetter = (current: string): string => {
-    if (!current) return 'A';
+    if (!current) return "A";
     const lastChar = current.slice(-1);
-    if (lastChar !== 'Z') return current.slice(0, -1) + String.fromCharCode(lastChar.charCodeAt(0) + 1);
-    return incrementLetter(current.slice(0, -1)) + 'A';
-}
+    if (lastChar !== "Z") return current.slice(0, -1) + String.fromCharCode(lastChar.charCodeAt(0) + 1);
+    return `${incrementLetter(current.slice(0, -1))}A`;
+};
+
+export const inRange = (value: number, [min, max]: number[], offset = 0) =>
+    (value - (min - offset)) * (value - (max + offset)) <= 0;
