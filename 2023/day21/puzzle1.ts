@@ -1,12 +1,14 @@
-class GridPoint {
+export class GridPoint {
     x: number;
     y: number;
+    char: string;
     obstacle: boolean;
     neighbors: GridPoint[];
-    constructor(x: number, y: number, obstacle: boolean) {
+    constructor(x: number, y: number, char: string) {
         this.x = x;
         this.y = y;
-        this.obstacle = obstacle;
+        this.char = char;
+        this.obstacle = char === "#";
         this.neighbors = [];
     }
     updateNeighbors(grid: GridPoint[][]) {
@@ -20,7 +22,7 @@ class GridPoint {
     }
 }
 
-const initGrid = (input: string): GridPoint | null => {
+export const initGrid = (input: string): [GridPoint[][], GridPoint | null] => {
     const rows = input.split("\n");
     let start: GridPoint | null = null;
     const grid: GridPoint[][] = new Array(rows.length);
@@ -29,7 +31,7 @@ const initGrid = (input: string): GridPoint | null => {
     }
     for (let i = 0; i < rows.length; i++) {
         for (let j = 0; j < rows[i].length; j++) {
-            grid[i][j] = new GridPoint(i, j, rows[i][j] === "#");
+            grid[i][j] = new GridPoint(i, j, rows[i][j]);
             if (rows[i][j] === "S") start = grid[i][j];
         }
     }
@@ -38,7 +40,7 @@ const initGrid = (input: string): GridPoint | null => {
             grid[i][j].updateNeighbors(grid);
         }
     }
-    return start;
+    return [grid, start];
 };
 
 const walk = (start: GridPoint, steps: number): number => {
@@ -57,7 +59,7 @@ const walk = (start: GridPoint, steps: number): number => {
 };
 
 export const handler = (input: string, steps = 64): number => {
-    const start = initGrid(input);
+    const [, start] = initGrid(input);
     if (!start) throw new Error("No starting point found");
     return walk(start, steps);
 };
